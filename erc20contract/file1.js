@@ -95,6 +95,14 @@ async function approveSpending(spenderAddress, amount) {
 //       console.error('Error transferring with approval:', error);
 //     }
 //   }
+async function checkAllowance(ownerAddress, spenderAddress) {
+    try {
+      const allowance = await contract1.allowancefun(ownerAddress, spenderAddress);
+      console.log('Allowance:', allowance.toString());
+    } catch (error) {
+      console.error('Error checking allowance:', error);
+    }
+  }
   approveSpending('0xbCb67b47D270bF1CBB55e6b0D48824d6FbB22fD2', 50);
   //transferFromWithApproval('senderAddress', 'recipientAddress', 30);
   //transferFromWithApproval('0xbCb67b47D270bF1CBB55e6b0D48824d6FbB22fD2', '0xB49B88526ff332e499Dc5CD0450358F96E4e8B6B', 30);
@@ -103,3 +111,4 @@ async function approveSpending(spenderAddress, amount) {
    //mintTokens('0xB0A386B77B81Be0C4D0DE0F6BFe3F08892c15F72', 200);
   //burnTokens('0xB0A386B77B81Be0C4D0DE0F6BFe3F08892c15F72', 50);
   getBalanceOf('0xB0A386B77B81Be0C4D0DE0F6BFe3F08892c15F72');
+checkAllowance('0xB0A386B77B81Be0C4D0DE0F6BFe3F08892c15F72', '0xbCb67b47D270bF1CBB55e6b0D48824d6FbB22fD2');
